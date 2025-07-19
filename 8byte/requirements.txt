@@ -1,0 +1,5 @@
+django>=4.0
+pydantic>=1.8
+pillow>=9.0
+pytesseract>=0.3
+PyPDF2>=2.0

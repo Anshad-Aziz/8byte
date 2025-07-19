@@ -1,0 +1,58 @@
+/* Tailwind CSS CDN is included in base.html, so we add custom styles here */
+.btn-primary {
+    @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1;
+    display: inline-flex !important; /* Ensure button is visible */
+}
+
+.btn-secondary {
+    @apply bg-gray-500 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1;
+    display: inline-flex !important; /* Ensure button is visible */
+}
+
+.btn-edit {
+    @apply text-blue-500 font-medium hover:text-blue-700 transition-colors duration-200;
+}
+
+table tr:nth-child(even) {
+    @apply bg-gray-50;
+}
+
+table tr:hover {
+    @apply bg-blue-50;
+}
+
+input:focus, select:focus {
+    @apply ring-2 ring-blue-500 ring-opacity-50;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ensure form elements are visible */
+#upload-form {
+    @apply flex flex-col sm:flex-row gap-4 items-center;
+}
+
+#upload-button {
+    @apply visible; /* Explicitly ensure button visibility */
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    table {
+        @apply block overflow-x-auto;
+    }
+    th, td {
+        @apply min-w-[100px];
+    }
+}

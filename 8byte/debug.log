@@ -1,0 +1,915 @@
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: receipt_receipt
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\views\receipt_views.py", line 33, in receipt_list
+    receipts = search_receipts(query)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\algorithms.py", line 20, in search_receipts
+    return list(receipts)
+           ^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "E:\8byte\.venv\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "E:\8byte\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: receipt_receipt
+Watching for file changes with StatReloader
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template.jpg
+['tesseract', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_g1_paf9w_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_g1_paf9w', 'txt']
+Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error in upload_receipt: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 54, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_vIXhUzj.jpg
+['tesseract', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_enzmjw0f_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_enzmjw0f', 'txt']
+Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error in upload_receipt: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 54, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_5np4glP.jpg
+['tesseract', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_4tl1_bq5_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_4tl1_bq5', 'txt']
+Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error in upload_receipt: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 54, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Watching for file changes with StatReloader
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_99OA9cO.jpg
+['tesseract', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_uakknzmv_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_uakknzmv', 'txt']
+Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error in upload_receipt: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 12, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 21, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 54, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+E:\8byte\receipt\services\data_parsing.py changed, reloading.
+Watching for file changes with StatReloader
+E:\8byte\receipt\services\data_parsing.py changed, reloading.
+Watching for file changes with StatReloader
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_EcRB5zy.jpg
+['C:\\Program Files\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_6o7u2gj8_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_6o7u2gj8', 'txt']
+Error processing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 14, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 24, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 78, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error in upload_receipt: Error processing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 14, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 24, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 78, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 54, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: name 'file_path' is not defined
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_vaosNbx.jpg
+['C:\\Program Files\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_btvlqc8r_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_btvlqc8r', 'txt']
+Error processing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 14, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 24, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 78, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error in upload_receipt: Error processing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 32, in ingest_file
+    parsed_data = parse_file(full_path)
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 14, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 24, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 78, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 54, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: name 'file_path' is not defined
+Watching for file changes with StatReloader
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_KDi4440.jpg
+Parsing file: media\uploads/supermarket-receipt-template_KDi4440.jpg
+Processing image: media\uploads/supermarket-receipt-template_KDi4440.jpg
+['tesseract', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_vxt1bz87_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_vxt1bz87', 'txt']
+Error processing image media\uploads/supermarket-receipt-template_KDi4440.jpg: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 39, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error parsing file media\uploads/supermarket-receipt-template_KDi4440.jpg: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 23, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 39, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error processing file supermarket-receipt-template.jpg: Error parsing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 23, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 39, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 37, in ingest_file
+    parsed_data = parse_file(full_file_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 34, in parse_file
+    raise Exception(f"Error parsing file: {str(e)}")
+Exception: Error parsing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Error in upload_receipt: Error processing file: Error parsing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Traceback (most recent call last):
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 275, in run_tesseract
+    proc = subprocess.Popen(cmd_args, **subprocess_args())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 23, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 39, in parse_image
+    text = pytesseract.image_to_string(Image.open(file_path))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "E:\8byte\.venv\Lib\site-packages\pytesseract\pytesseract.py", line 280, in run_tesseract
+    raise TesseractNotFoundError()
+pytesseract.pytesseract.TesseractNotFoundError: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 37, in ingest_file
+    parsed_data = parse_file(full_file_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 34, in parse_file
+    raise Exception(f"Error parsing file: {str(e)}")
+Exception: Error parsing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 59, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: Error parsing file: tesseract is not installed or it's not in your PATH. See README file for more information.
+Watching for file changes with StatReloader
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_97YL618.jpg
+Parsing file: media\uploads/supermarket-receipt-template_97YL618.jpg
+Processing image: media\uploads/supermarket-receipt-template_97YL618.jpg
+['C:\\Program Files\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_ybf08l51_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_ybf08l51', 'txt']
+Extracted text: SUPERMARKET
+
+Lorem ipsum 258
+Gity Index - 02025
+Tel.: +456-468-987-02
+
+Cashier: #3
+Manager: Eric Steer
+
+Name Qty Price
+Lorem ipsum 1 $9.20
+Lorem ipsum dolor sit 1 $19.20
+Lorem ipsum dolor sit amet 1 $...
+Extracting data from text
+Found amount: 9.2
+Error extracting data: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error processing image media\uploads/supermarket-receipt-template_97YL618.jpg: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 44, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error parsing file media\uploads/supermarket-receipt-template_97YL618.jpg: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 26, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 44, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error processing file supermarket-receipt-template.jpg: Error parsing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 26, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 44, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 37, in ingest_file
+    parsed_data = parse_file(full_file_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 37, in parse_file
+    raise Exception(f"Error parsing file: {str(e)}")
+Exception: Error parsing file: name 'file_path' is not defined
+Error in upload_receipt: Error processing file: Error parsing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 26, in parse_file
+    return parse_image(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 44, in parse_image
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 37, in ingest_file
+    parsed_data = parse_file(full_file_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 37, in parse_file
+    raise Exception(f"Error parsing file: {str(e)}")
+Exception: Error parsing file: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 59, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: Error parsing file: name 'file_path' is not defined
+Processing file: test.txt
+File saved to: media\uploads/test.txt
+Parsing file: media\uploads/test.txt
+Processing text file: media\uploads/test.txt
+Extracted text: Walmart
+01/15/2025
+Total: $45.67...
+Extracting data from text
+Found vendor: Walmart
+Found date: 2025-01-15
+Found amount: 45.67
+Error extracting data: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error processing text file media\uploads/test.txt: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 71, in parse_text
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error parsing file media\uploads/test.txt: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 30, in parse_file
+    return parse_text(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 71, in parse_text
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+Error processing file test.txt: Error parsing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 30, in parse_file
+    return parse_text(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 71, in parse_text
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 37, in ingest_file
+    parsed_data = parse_file(full_file_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 37, in parse_file
+    raise Exception(f"Error parsing file: {str(e)}")
+Exception: Error parsing file: name 'file_path' is not defined
+Error in upload_receipt: Error processing file: Error parsing file: name 'file_path' is not defined
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_parsing.py", line 30, in parse_file
+    return parse_text(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 71, in parse_text
+    return extract_data(text)
+           ^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 124, in extract_data
+    'file_name': file_path
+                 ^^^^^^^^^
+NameError: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\services\data_ingestion.py", line 37, in ingest_file
+    parsed_data = parse_file(full_file_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_parsing.py", line 37, in parse_file
+    raise Exception(f"Error parsing file: {str(e)}")
+Exception: Error parsing file: name 'file_path' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\8byte\receipt\views\receipt_views.py", line 22, in upload_receipt
+    receipt = ingest_file(file)
+              ^^^^^^^^^^^^^^^^^
+  File "E:\8byte\receipt\services\data_ingestion.py", line 59, in ingest_file
+    raise Exception(f"Error processing file: {str(e)}")
+Exception: Error processing file: Error parsing file: name 'file_path' is not defined
+E:\8byte\receipt\services\data_ingestion.py changed, reloading.
+Watching for file changes with StatReloader
+E:\8byte\receipt\services\data_ingestion.py changed, reloading.
+Watching for file changes with StatReloader
+E:\8byte\receipt\services\data_ingestion.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+E:\8byte\receipt\views\receipt_views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\8byte\receipt\services\data_ingestion.py changed, reloading.
+Watching for file changes with StatReloader
+E:\8byte\receipt_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Processing file: test.txt
+File saved to: media\uploads/test_86KPX5A.txt
+Parsing file: media\uploads/test_86KPX5A.txt
+Processing text file: media\uploads/test_86KPX5A.txt
+Extracted text: Walmart
+01/15/2025
+Total: $45.67...
+Extracting data from text
+Found vendor: Walmart
+Found date: 2025-01-15
+Found amount: 45.67
+Extracted data: {'vendor': 'Walmart', 'transaction_date': datetime.date(2025, 1, 15), 'amount': 45.67, 'category': 'Groceries', 'file_name': 'media\\uploads/test_86KPX5A.txt'}
+Parsed data: {'vendor': 'Walmart', 'transaction_date': datetime.date(2025, 1, 15), 'amount': 45.67, 'category': 'Groceries', 'file_name': 'media\\uploads/test_86KPX5A.txt'}
+Receipt saved to database: 1
+Successfully saved receipt: 1
+Processing file: supermarket-receipt-template.jpg
+File saved to: media\uploads/supermarket-receipt-template_i7u4g2y.jpg
+Parsing file: media\uploads/supermarket-receipt-template_i7u4g2y.jpg
+Processing image: media\uploads/supermarket-receipt-template_i7u4g2y.jpg
+['C:\\Program Files\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess__7sdnzbb_input.JPEG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess__7sdnzbb', 'txt']
+Extracted text: SUPERMARKET
+
+Lorem ipsum 258
+Gity Index - 02025
+Tel.: +456-468-987-02
+
+Cashier: #3
+Manager: Eric Steer
+
+Name Qty Price
+Lorem ipsum 1 $9.20
+Lorem ipsum dolor sit 1 $19.20
+Lorem ipsum dolor sit amet 1 $...
+Extracting data from text
+Found amount: 9.2
+Extracted data: {'vendor': 'Unknown', 'transaction_date': datetime.date(2025, 7, 19), 'amount': 9.2, 'category': 'Uncategorized', 'file_name': 'media\\uploads/supermarket-receipt-template_i7u4g2y.jpg'}
+Parsed data: {'vendor': 'Unknown', 'transaction_date': datetime.date(2025, 7, 19), 'amount': 9.2, 'category': 'Uncategorized', 'file_name': 'media\\uploads/supermarket-receipt-template_i7u4g2y.jpg'}
+Receipt saved to database: 2
+Successfully saved receipt: 2
+Watching for file changes with StatReloader
+Processing file: receipt-template-us-mono-black-750px.png
+File saved to: media\uploads/receipt-template-us-mono-black-750px.png
+Parsing file: media\uploads/receipt-template-us-mono-black-750px.png
+Processing image: media\uploads/receipt-template-us-mono-black-750px.png
+STREAM b'IHDR' 16 13
+STREAM b'tEXt' 41 25
+STREAM b'iTXt' 78 1006
+STREAM b'PLTE' 1096 45
+STREAM b'IDAT' 1153 25025
+['C:\\Program Files\\Tesseract-OCR\\tesseract.exe', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_isfr5dy4_input.PNG', 'C:\\Users\\64INSE~1\\AppData\\Local\\Temp\\tess_isfr5dy4', 'txt']
+Extracted text: receipt
+
+FROM RECEIPT # us-001
+East Repair Inc. RECEIPT DATE 1102/2019
+1912 Harvest Lane P.O.# 2312/2019
+New York, NY 12210
+DUE DATE 26/02/2019
+BILL TO SHIP TO
+John Smith John Smith
+2 Court Square 378...
+Extracting data from text
+Found amount: 154.06
+Extracted data: {'vendor': 'Unknown', 'transaction_date': datetime.date(2025, 7, 19), 'amount': 154.06, 'category': 'Uncategorized', 'file_name': 'media\\uploads/receipt-template-us-mono-black-750px.png'}
+Parsed data: {'vendor': 'Unknown', 'transaction_date': datetime.date(2025, 7, 19), 'amount': 154.06, 'category': 'Uncategorized', 'file_name': 'media\\uploads/receipt-template-us-mono-black-750px.png'}
+Receipt saved to database: 3
+Successfully saved receipt: 3
+Updated receipt: 2

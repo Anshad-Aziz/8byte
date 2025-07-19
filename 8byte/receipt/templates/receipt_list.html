@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Receipt Manager</h1>
+    
+    <!-- Upload Form -->
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        <form id="upload-form" method="post" enctype="multipart/form-data" action="{% url 'upload_receipt' %}" class="flex flex-col sm:flex-row gap-4 items-center">
+            {% csrf_token %}
+            <label for="file" class="text-gray-700 font-medium">Upload Receipt</label>
+            <input type="file" id="file" name="file" accept=".jpg,.png,.pdf,.txt" required class="border border-gray-300 rounded-md p-2 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button type="submit" id="upload-button" class="btn-primary flex items-center justify-center space-x-2">
+                <span id="upload-text">Upload</span>
+                <svg id="upload-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
+        </form>
+        {% if error %}
+        <p class="text-red-500 mt-2">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Search and Sort -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+        <input type="text" id="search" placeholder="Search receipts by vendor or category..." class="border border-gray-300 rounded-md p-2 w-full sm:w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <select id="sort" class="border border-gray-300 rounded-md p-2 w-full sm:w-1/4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="date">Sort by Date</option>
+            <option value="amount">Sort by Amount</option>
+            <option value="vendor">Sort by Vendor</option>
+        </select>
+        <a href="{% url 'export_csv' %}" class="btn-secondary">Export CSV</a>
+    </div>
+
+    <!-- Receipts Table -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Vendor</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Date</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Amount</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Category</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="receipts-table">
+                {% for receipt in receipts %}
+                <tr class="hover:bg-gray-50 transition-colors duration-200">
+                    <td class="py-3 px-4 border-b">{{ receipt.vendor }}</td>
+                    <td class="py-3 px-4 border-b">{{ receipt.transaction_date }}</td>
+                    <td class="py-3 px-4 border-b">${{ receipt.amount }}</td>
+                    <td class="py-3 px-4 border-b">{{ receipt.category }}</td>
+                    <td class="py-3 px-4 border-b">
+                        <a href="{% url 'edit_receipt' receipt.pk %}" class="btn-edit">Edit</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="py-3 px-4 text-center text-gray-500">No receipts found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Summary and Charts -->
+    <div class="mt-8 bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Summary</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 bg-blue-100 rounded-md">
+                <p class="text-gray-700">Total</p>
+                <p class="text-xl font-bold text-blue-600">${{ aggregates.total|floatformat:2 }}</p>
+            </div>
+            <div class="p-4 bg-green-100 rounded-md">
+                <p class="text-gray-700">Mean</p>
+                <p class="text-xl font-bold text-green-600">${{ aggregates.mean|floatformat:2 }}</p>
+            </div>
+            <div class="p-4 bg-yellow-100 rounded-md">
+                <p class="text-gray-700">Median</p>
+                <p class="text-xl font-bold text-yellow-600">${{ aggregates.median|floatformat:2 }}</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div>
+                <h3 class="text-lg font-medium text-gray-700 mb-2">Vendor Distribution</h3>
+                <canvas id="vendorChart"></canvas>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-gray-700 mb-2">Monthly Spend Trend</h3>
+                <canvas id="trendChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
